@@ -51,7 +51,6 @@ class Groups {
             memberContainer.textContent = member.username
             groupContainer.appendChild(memberContainer)
         })
-
         const searchFunc = document.getElementById('userSearch').content.querySelector('div').cloneNode(true);
         searchFunc.querySelector('button').addEventListener('click', () => {
             if (searchFunc.querySelector('input').value != '') {
@@ -111,7 +110,7 @@ class Groups {
                 this.displayGroup({
                     members: obj.members,
                     name: obj.title,
-                    _id: obj._id
+                    _id: obj.id
                 })
             }
         })

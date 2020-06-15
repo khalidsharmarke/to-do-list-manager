@@ -59,7 +59,6 @@ router.post('/register', async (req, res) => {
 })
 
 router.post('/getUser', (req, res) => {
-    // console.log('here',req.body, req.query)
     db.User
         .findOne(req.query)
         .then(user => {
