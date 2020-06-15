@@ -1,0 +1,49 @@
+body {
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color:  #C3DEE6;
+}
+
+header {
+	padding: 5px;
+	width: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.sign-in-form {}
+
+.main {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	width: calc(100%/3);
+	height: 100%;
+	padding: 3%;
+}
+
+.container h3 {
+	text-align: center;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+}
+
+.groups .list button {
+	background-color: green;
+	text-align: left;
+}
+
+#calendar {
+	display: flex;
+	flex-wrap: wrap;
+	border: black;
+	border-width: 1px;
+}

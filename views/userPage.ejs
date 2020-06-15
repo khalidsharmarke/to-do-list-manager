@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/general.css">
+</head>
+
+<body>
+    <header>
+        <span id="show-date"></span>
+        <h2 id="title">Task Manager</h2>
+        <span id="username"></span>
+    </header>
+    <div class="main">
+        <div class="container">
+            <h3>List of Task Groupings</h2>
+                <div class="list" id="groups">
+                </div>
+        </div>
+        <div class="container">
+            <div id="calendar">
+            	<div id="calendar-head"></div>
+            	<div id="calendar-body"></div>
+            </div>
+            <div id="active-selection">
+            	
+            </div>
+        </div>
+        <div class="container">
+            <h3 id="groupName">List of Tasks per Group Name</h3>
+            <div class="list" id="items">
+        </div>
+        <script type="text/javascript" src="../public/js/itemList.js"></script>
+        <script type="text/javascript" src="../public/js/groupList.js"></script>
+        <script type="text/javascript" src="../public/js/calendar.js"></script>
+        <script type="text/javascript" src="../public/js/item.js"></script>
+        <script type="text/javascript">
+        	let user = <%-JSON.stringify(user)%>;
+        	document.getElementById('username').textContent = user._name;
+        	document.getElementById('show-date').textContent = new Date().toDateString()
+
+        	let groups = new Groups(user, document.getElementById('groups'), document.getElementById('items'))
+        	groups.init()
+
+        	console.log(user)
+
+        	// console.log(user)
+        </script>
+</body>
+	<template id="item-form-template">
+        <form>
+            <h4></h4>
+            	<label for="title">Title:</label><br>
+            	<input type="text" name="title" id="title" required><br><br>
+
+            	<label for="item_type">Type of Item:</label><br>
+            	<select type="select" name="item_type" id="item_type" required>
+            		<option value="meeting">Meeting</option>
+            		<option value="event">Event</option>
+            		<option value="task">Task</option>
+            	</select><br><br>
+
+            	<label for="time_event_occurs">Time:</label><br>
+            	<input type="datetime-local" name="time_event_occurs" id="time_event_occurs"><br><br>
+
+            	<label for="notes">Notes:</label><br>
+            	<textarea id="notes" name="notes"></textarea><br><br>
+
+            	<label for="done">Completed:</label>
+            	<input type="checkbox" name="done" id="done"><br>
+
+            	<button type="submit">Save</button>
+        </form>
+    </template>
+    <template id="userSearch">
+        <br>
+    	<div>
+            <label for="userSearch">Add Others to Group:</label><br>
+            <input type="text" id="userSearch"><br>
+            <button>Add</button>
+       	</div>
+    </template>
+    <template id="newGroup">
+        <div>
+            <span>would you like to</span>
+            <button>Create</button>
+            <span>or</span>
+            <button>Join</button>
+            <span>a group?</span>
+        </div>
+    </template>
+    <template id="groupAddition">
+        <div>
+            <br>
+            <h4><label for="groupAdditionInput"></label></h4>
+            <input type="text" id="groupAdditionInput">
+            <button></button>
+        </div>
+    </template>
+
+

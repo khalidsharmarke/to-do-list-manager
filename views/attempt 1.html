@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/general.css">
+</head>
+
+<body>
+    <header>
+        <span>User Name</span>
+        <h2>Task Manager</h2>
+        <span id="date-tracker">today's date</span>
+    </header>
+    <div class="main">
+        <div class="container">
+            <h3>List of Task Groupings</h2><button>Create/Join Group</button>
+                <div class="groups list">
+                    <button>Personals</button>
+                    <button>Group A</button>
+                    <button>Group B</button>
+                    <button>Group C</button>
+                </div>
+        </div>
+        <div class="container">
+            <div id="calendar">
+            	<div id="calendar-head"></div>
+            	<div id="calendar-body"></div>
+            </div>
+            <div clas="active-day"></div>
+        </div>
+        <div class="container">
+            <h3>List of Tasks per Group Name</h3>
+            <div class="items list">
+                <button>Add Item</button>
+                <button>Item 1</button>
+                <button>Item 2</button>
+                <button>Item 3</button>
+        </div>
+        <script type="text/javascript" src="../public/js/calendar.js"></script>
+</body>
+</html>

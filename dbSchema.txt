@@ -1,0 +1,92 @@
+The purpose of this document is to outline the contents of the DB
+as well as what to expect back on query and how to interpret results.
+
+every Entry in any table below will use a UUID as a primary key:
+
+User:
+	username
+	password
+	active login token
+	list of groups as IDs
+	list of items as IDs
+	settings
+
+Group:
+	PK - generate ID
+	FK - ppl in group
+		date created
+
+
+Task/Event:
+	PK - generate ID
+	FK - owner (group/user)
+		type - to do/ meeting / event (used for color coding)
+		Title
+		notes
+		date created
+		time event occurs - ex. 8-9pm
+		deadline - false || time
+		recurring - false || interval
+		location
+		done - yes/no - check state against - completed/yet-to-do/abandoned
+
+ex1: (Personal task)
+	Khalid's Task -
+		Clean House (title)
+		set on 01/01/2021 - some random day of the week (date created)
+		start task on 01/12 - some Saturday (time event starts)
+		end on 01/4 - some Sunday (deadline)
+		reoccurs every weekend after start (interval)
+		khalid's house (location)
+		microtasks: 
+			dishes
+			laundry
+			sweeping
+			etc
+			(all point back to khalid - can be grouped to just be one large note but should be parsed if possible)
+
+	khalid has to mark task as either being completed or not;
+	maybe as why no completed
+
+
+ex2: (Group task on top level)
+	Family Task (khalid, mom, dad, siblings)- 
+		Clean House
+		set on 01/01/2021 - some random day of the week (date created)
+		start task on 01/12 - some Saturday (time event starts)
+		end on 01/4 - some Sunday (deadline)
+		reoccurs every weekend after start (interval)
+		Fam's house (location)
+		microtasks
+			dishes - assign to mom
+			laundry - dad
+			sweeping - khalid
+
+	when khalid logs in, he'll see the whole event/task but sweeping will be set as a task for him to complete
+	siblings will log in and see the task but have no task set for them to do
+
+	because group events exist where ppl can have nothing to do - 
+	and every personal task must be addressed entirely by 1 person -
+
+	for each task made:
+		if for user: microtasks/notes r not required bc they gotta do everything
+		if for group : ask if there r specific things individuals should do - then assign from there
+
+	for each task returned from db:
+		if personal: 
+			return the whole thing
+		if group:
+			show the user that is requesting the whole event paired with any specific tasks they have for that event
+				if null things r to be done
+					return null - just show up
+				if !null 
+					return task w/ user's detail
+
+
+
+
+
+
+
+
+
